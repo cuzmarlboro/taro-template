@@ -1,12 +1,9 @@
 {
-  "extends": [
-    "taro/react"
-  ],
+  "extends": ["taro/react"],
   "rules": {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "off", // 未使用不报错
-    "import/no-commonjs": "off",
-    "no-undef": "off"
+    "no-unused-vars": "off",
+    "import/no-commonjs": "off"
   }
 }

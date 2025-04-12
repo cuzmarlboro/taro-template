@@ -1,0 +1,88 @@
+@import './assets/font/Roman.css';
+@import './assets/font/Gilroy-Light.css';
+@import './assets/font/Gilroy-ExtraBold.css';
+@import './assets/reset.css';
+
+.taro_page,
+.taro_router,
+.nut-configprovider,
+body,
+page {
+  height: 100% !important;
+  overflow: hidden !important;
+  /* 使字体在 WebKit 浏览器中更平滑 */
+  -webkit-font-smoothing: antialiased;
+  /* 使字体在 macOS 上的 Firefox 浏览器中更清晰 */
+  -moz-osx-font-smoothing: grayscale;
+  /* 解决ios滑动不流畅 */
+  -webkit-overflow-scrolling: touch;
+}
+
+.taro-navigation-bar-hide,
+.taro-navigation-bar-no-icon,
+#taro-navigation-bar {
+  display: none !important;
+}
+
+
+.taro-navigation-bar-hide,
+.taro-navigation-bar-no-icon,
+#taro-navigation-bar {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: light) {
+
+  .taro_page,
+  .taro_router,
+  .taro-navigation-bar,
+  body,
+  page {
+    background-color: #F5F5F5 !important;
+  }
+
+  .mbtiToast {
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    font-size: 16px !important;
+    margin-top: 36px !important;
+    line-height: 16px;
+    z-index: 99999;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .taro_page,
+  .taro_router,
+  .taro-navigation-bar,
+  body,
+  page {
+    background-color: #0E0E11 !important;
+  }
+
+  .mbtiToast {
+    background-color: #1C1C1E !important;
+    color: #F5F5F5 !important;
+    font-size: 16px !important;
+    margin-top: 36px !important;
+    line-height: 16px;
+    z-index: 99999;
+  }
+}
+
+.nut-popup-bottom,
+.nut-popup-top {
+  max-height: 100% !important;
+}
+
+.nut-input {
+  --nutui-input-padding: 10px 16px;
+}
+
+.nut-drag {
+  z-index: 9 !important;
+}
+
+
+

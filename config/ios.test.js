@@ -1,24 +1,25 @@
 /*
  * @Author: 何泽颖 hezeying@autowise.ai
- * @Date: 2024-07-16 12:54:06
+ * @Date: 2024-10-10 15:11:46
  * @LastEditors: hezeying@xdf.cn
- * @LastEditTime: 2025-04-13 02:15:14
- * @FilePath: /taro-template/config/test.js
+ * @LastEditTime: 2025-04-13 02:14:49
+ * @FilePath: /taro-template/config/ios.test.js
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
  */
-const { DEPLOY_CONFIG, TEST } = require('../src/constants/DepolyConfig');
-
+const { DEPLOY_CONFIG, IOS_TEST } = require('../src/constants/DepolyConfig');
 const { VersionPlugin } = require('../plugin/version-webpack-plugin.js');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 export default {
+  mini: {},
   h5: {
-    publicPath: DEPLOY_CONFIG[TEST].publicPath,
-    outputRoot: DEPLOY_CONFIG[TEST].outputRoot, // 项目产出目录
+    publicPath: DEPLOY_CONFIG[IOS_TEST].publicPath, // 项目产出路径
+    outputRoot: DEPLOY_CONFIG[IOS_TEST].outputRoot, // 项目产出目录
     webpackChain(chain) {
       chain.plugin('VersionPlugin').use(new VersionPlugin());
+
       chain.plugin('CompressionPlugin').use(
         new CompressionPlugin({
           filename: '[path].gz[query]', //  使得多个.gz文件合并成一个文件，这种方式压缩后的文件少，建议使用
@@ -28,6 +29,7 @@ export default {
           minRatio: 0.8 // 最小压缩比率，官方默认0.8
         })
       );
+
       return chain;
     }
   }

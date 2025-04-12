@@ -1,24 +1,20 @@
-/*
- * @Author: 何泽颖 hezeying@autowise.ai
- * @Date: 2024-05-28 17:25:54
- * @LastEditors: 何泽颖 hezeying@autowise.ai
- * @LastEditTime: 2024-05-28 17:46:14
- * @FilePath: /taro-template/config/index.js
- * @Description: 
- */
-import { defineConfig } from '@tarojs/cli'
-import path from 'path';
-import devConfig from './dev'
-import testConfig from './test'
-import prodConfig from './prod'
+const { defineConfig } = require('@tarojs/cli');
+const path = require('path');
+const devConfig = require('./dev');
+const testConfig = require('./test');
+const prodConfig = require('./prod');
+const iosConfig = require('./ios');
+const androidConfig = require('./android');
+const iosTestConfig = require('./ios.test');
+const androidTestConfig = require('./android.test');
 
-export default defineConfig(async (merge, { command, mode }) => {
-  console.log('🚀 ~ 当前环境:', mode)
-  
+module.exports = defineConfig(async (merge, { command, mode }) => {
+  console.log('🚀 ~ 当前环境:', mode);
+
   const baseConfig = {
     projectName: 'taro-template',
     date: '2024-5-28',
-    // designWidth: 750,
+    plugins: ['@tarojs/plugin-html'], // 开启 HTML 插件
     designWidth: 375, // 设计稿宽度为375
     deviceRatio: {
       640: 2.34 / 2,
@@ -26,43 +22,30 @@ export default defineConfig(async (merge, { command, mode }) => {
       375: 2,
       828: 1.81 / 2
     },
-    alias: { // 设置文件别名
-      '@': path.resolve(__dirname, '..', 'src') 
+    alias: {
+      // 设置文件别名
+      '@': path.resolve(__dirname, '..', 'src')
     },
-    plugins: ['@tarojs/plugin-html'],
     sourceRoot: 'src',
     outputRoot: 'dist',
-    plugins: [],
-    env: {
-      NODE_ENV: JSON.stringify(mode) // 设置环境变量
-    },
-    defineConstants: {
-    },
+    defineConstants: {},
     copy: {
-      patterns: [
-      ],
-      options: {
-      }
+      patterns: [],
+      options: {}
     },
     framework: 'react',
-    // compiler: 'webpack5',
-    compiler: { 
-      type: 'webpack5',
-      prebundle: { enable: false }  // 解决webpack5 编译后不识别 .wxss 后缀的文件
-    },
+    compiler: { type: 'webpack5', prebundle: { enable: false } }, // 解决webpack5 编译后不识别 .wxss 后缀的文件
     cache: {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
-    sass: {
-      resource: [path.resolve(__dirname, '..', 'src/global.scss')] // 引入 scss 全局变量
+    env: {
+      NODE_ENV: JSON.stringify(mode) // 设置环境变量
     },
     mini: {
       postcss: {
         pxtransform: {
           enable: true,
-          config: {
-
-          }
+          config: {}
         },
         url: {
           enable: true,
@@ -109,25 +92,36 @@ export default defineConfig(async (merge, { command, mode }) => {
       appName: 'taroDemo',
       postcss: {
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: false // 默认为 false，如需使用 css modules 功能，则设为 true
         }
       }
     }
-  }
+  };
 
-  // 本地开发构建配置（不混淆压缩）
   if (mode === 'development') {
-    return merge({}, baseConfig, devConfig)
+    return merge({}, baseConfig, devConfig);
   }
 
-  //  测试环境构建配置（不混淆压缩）
   if (mode === 'test') {
-    return merge({}, baseConfig, testConfig)
+    return merge({}, baseConfig, testConfig);
+  }
+
+  if (mode === 'ios') {
+    return merge({}, baseConfig, iosConfig);
+  }
+
+  if (mode === 'android') {
+    return merge({}, baseConfig, androidConfig);
+  }
+
+  if (mode === 'ios-test') {
+    return merge({}, baseConfig, iosTestConfig);
+  }
+
+  if (mode === 'android-test') {
+    return merge({}, baseConfig, androidTestConfig);
   }
 
   // 生产构建配置（默认开启压缩混淆等）
-  return merge({}, baseConfig, prodConfig)
-})
-
-
-
+  return merge({}, baseConfig, prodConfig);
+});
