@@ -34,7 +34,13 @@
     "dev:jd": "npm run build:jd -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "dev:harmony-hybrid": "npm run build:harmony-hybrid -- --watch",
-    "test": "jest"
+    "test": "jest",
+    "deploy:test": "node ./script/deploy.test.js",
+    "deploy:prod": "node ./script/deploy.prod.js",
+    "deploy:ios": "node ./script/deploy.ios.js",
+    "deploy:ios-test": "node ./script/deploy.ios.test.js",
+    "deploy:android": "node ./script/deploy.android.js",
+    "deploy:android-test": "node ./script/deploy.android.test.js"
   },
   "browserslist": [
     "last 3 versions",

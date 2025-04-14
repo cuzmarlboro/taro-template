@@ -1,6 +1,7 @@
 @import './assets/font/Roman.css';
 @import './assets/font/Gilroy-Light.css';
 @import './assets/font/Gilroy-ExtraBold.css';
+@import './assets/font/Sentient.css';
 @import './assets/reset.css';
 
 .taro_page,
@@ -8,29 +9,33 @@
 .nut-configprovider,
 body,
 page {
+  // 设置页面高度为100%
   height: 100% !important;
+  // 隐藏页面滚动条
   overflow: hidden !important;
-  /* 使字体在 WebKit 浏览器中更平滑 */
+  // 使字体在 WebKit 浏览器中更平滑
   -webkit-font-smoothing: antialiased;
-  /* 使字体在 macOS 上的 Firefox 浏览器中更清晰 */
+  // 使字体在 macOS 上的 Firefox 浏览器中更清晰
   -moz-osx-font-smoothing: grayscale;
-  /* 解决ios滑动不流畅 */
+  // 解决ios滑动不流畅
   -webkit-overflow-scrolling: touch;
 }
 
+// 隐藏导航栏
 .taro-navigation-bar-hide,
 .taro-navigation-bar-no-icon,
 #taro-navigation-bar {
   display: none !important;
 }
 
-
+// 隐藏导航栏
 .taro-navigation-bar-hide,
 .taro-navigation-bar-no-icon,
 #taro-navigation-bar {
   display: none !important;
 }
 
+// 设置页面背景颜色
 @media (prefers-color-scheme: light) {
 
   .taro_page,
@@ -51,6 +56,7 @@ page {
   }
 }
 
+// 设置暗黑模式页面背景颜色
 @media (prefers-color-scheme: dark) {
 
   .taro_page,
@@ -83,6 +89,3 @@ page {
 .nut-drag {
   z-index: 9 !important;
 }
-
-
-

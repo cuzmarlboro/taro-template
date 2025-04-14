@@ -1,0 +1,28 @@
+.segmented {
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .segmented_item {
+    flex: 1;
+    z-index: 10;
+    transition: all 0.1s ease-in-out;
+    background-color: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .segmented_slider {
+    position: absolute;
+    height: 32px;
+    border-radius: 10px;
+    z-index: 1;
+    top: 4px;
+    transition: all 0.1s ease-in-out;
+  }
+}
