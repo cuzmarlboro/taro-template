@@ -1,9 +1,9 @@
 /*
  * @Author: 何泽颖 hezeying@autowise.ai
  * @Date: 2024-10-10 14:54:06
- * @LastEditors: 何泽颖 hezeying@autowise.ai
- * @LastEditTime: 2024-10-10 14:57:01
- * @FilePath: /mbti-ipa/script/deploy.js
+ * @LastEditors: hezeying@xdf.cn
+ * @LastEditTime: 2025-04-14 13:30:40
+ * @FilePath: /taro-template/script/deploy.js
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
@@ -65,6 +65,20 @@ const deploy = async (env, outputRoot) => {
   sftp.end();
 
   console.log(chalk.green(`✨ 部署成功！`));
+
+  // 删除本地打包产物目录
+  try {
+    // 检查本地打包产物目录是否存在
+    if (fs.existsSync(LOCAL_DIST_FOLDER)) {
+      // 递归删除目录及其所有内容，force 参数确保即使只读文件也能被删除
+      fs.rmSync(LOCAL_DIST_FOLDER, { recursive: true, force: true });
+      // 打印删除成功的消息
+      console.log(chalk.green(`✓ 本地打包产物 ${LOCAL_DIST_FOLDER} 已删除！`));
+    }
+  } catch (error) {
+    // 捕获并打印删除过程中可能发生的错误
+    console.error(chalk.red(`删除本地打包产物失败: ${error.message}`));
+  }
 
   // 退出进程
   process.exit(0);
