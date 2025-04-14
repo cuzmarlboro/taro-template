@@ -5,3 +5,12 @@ deploy_versions/
 node_modules/
 .DS_Store
 .swc
+
+
+# 打包产物
+# mbti_xxx_android_test/
+# mbti_xxx_android/
+# mbti_xxx_ios_test/
+# mbti_xxx_ios/
+# mbti_xxx_test/
+# mbti_xxx_prod/

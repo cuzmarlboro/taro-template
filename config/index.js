@@ -1,14 +1,14 @@
-const { defineConfig } = require('@tarojs/cli');
-const path = require('path');
-const devConfig = require('./dev');
-const testConfig = require('./test');
-const prodConfig = require('./prod');
-const iosConfig = require('./ios');
-const androidConfig = require('./android');
-const iosTestConfig = require('./ios.test');
-const androidTestConfig = require('./android.test');
+import { defineConfig } from '@tarojs/cli';
+import path from 'path';
+import devConfig from './dev';
+import testConfig from './test';
+import prodConfig from './prod';
+import iosConfig from './ios';
+import androidConfig from './android';
+import iosTestConfig from './ios.test';
+import androidTestConfig from './android.test';
 
-module.exports = defineConfig(async (merge, { command, mode }) => {
+export default defineConfig(async (merge, { command, mode }) => {
   console.log('🚀 ~ 当前环境:', mode);
 
   const baseConfig = {
